@@ -9,4 +9,6 @@ int str_equal(const char a[], const char b[]);
 
 int str_split(char *dest[], const char src[], const char delimeter);
 
+void substring(char dest[], char src[], int start_idx, int end_idx);
+
 #endif
