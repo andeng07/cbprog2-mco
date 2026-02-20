@@ -10,8 +10,8 @@ typedef struct {
 } Name;
 
 typedef struct {
-  int id;
-  int permission;
+  unsigned int id;
+  unsigned int permission;
   Name name;
   String32 password; // encrypted representation of the password
 } User;
