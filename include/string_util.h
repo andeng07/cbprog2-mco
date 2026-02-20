@@ -7,6 +7,6 @@ typedef char String64[65];
 
 int str_equal(const char a[], const char b[]);
 
-int str_split(char (*dest)[], const char src[], const char delimeter);
+int str_split(char *dest[], const char src[], const char delimeter);
 
 #endif
