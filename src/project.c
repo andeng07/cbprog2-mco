@@ -19,7 +19,7 @@ void computeForCeiling (Project s, int n){
 void compute_section_kgCO2e (Section *s, float constant){
     kgCO2e Amount;
 
-    if (strcmp("Wood", s->resource.material) == 0){
+    if (strcmp("Glass", s->resource.material) == 0){
         Amount = (s->volume) * (s->resource.embodiedCarbon);
     }
     else {
