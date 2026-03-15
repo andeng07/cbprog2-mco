@@ -2,6 +2,7 @@
 #define PROJECT_H
 #define CEMENT_DENSITY_CONSTANT 2400
 #define STEEL_DENSITY_CONSTANT 7840
+#define WOOD_DENSITY_CONSTANT 644
 #include "string_util.h"
 #include <stdbool.h>
 
