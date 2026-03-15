@@ -11,49 +11,46 @@ typedef float Meter;
 typedef float CubicMeter;
 
 typedef struct {
-    String64 company;
-    String64 product;
+    String64 company_name;
+    String64 product_name;
 
-    String8  materialCategory;   // wood, steel, glass, cement
-    String64 material;
+    String8  material_category;   // wood, steel, glass, cement
+    String64 material_type;
 
-    KgCO2ePerCubicMeter embodiedCarbon;
+    KgCO2ePerCubicMeter embodied_carbon;
 
 } Material;
 
 typedef struct {
-    String64 sectionName;
+    String64 section_name;
+
+    /* Associated material */
+    Material material;
 
     /* Dimensions */
     Meter height;
     Meter width;
     Meter length;
 
-    CubicMeter volume;
-
     /* Carbon calculation */
-    KgCO2e carbonValue;
-
-    /* Associated material */
-    Material material;
-
+    KgCO2e carbon_value;
 } Section;
 
 typedef struct {
-    String64 projectName;
+    String64 project_name;
 
-    KgCO2e totalCarbon;
-    bool isApproved;
+    KgCO2e total_carbon;
+    bool is_approved;
 
     Section sections[50];
 
 } Project;
 
 typedef struct {
-    String64 constructionCompany;
+    String64 company_name;
 
     Project projects[100];
 
 } Company;
 
-#endif 
+#endif
