@@ -7,18 +7,24 @@
 #include <stdbool.h>
 
 typedef float KgCO2e;
-typedef float KgCO2ePerCubicMeter;
+typedef float KgCO2ePerUnit;
+typedef float Constant;
 typedef float Meter;
 typedef float CubicMeter;
+
+typedef struct {
+    String8  category; //{"Cement", "Glass", "Steel", "Wood"}
+    Constant density; //{CEMENT_DENSITY_CONSTANT, NULL, STEEL_DENSITY_CONSTANT, WOOD_DENSITY_CONSTANT}
+} Category;
 
 typedef struct {
     String64 company_name;
     String64 product_name;
 
-    String8  material_category;   // wood, steel, glass, cement
+    Category material;   // wood, steel, glass, cement
     String64 material_type;
 
-    KgCO2ePerCubicMeter embodied_carbon;
+    KgCO2ePerUnit embodied_carbon;
 
 } Material;
 
@@ -53,5 +59,9 @@ typedef struct {
     Project projects[100];
 
 } Company;
+
+void compute_for_ceiling(Project s, int n);
+void compute_section_kgCO2e(Section *s, float constant);
+void compute_total_sum(Section s);
 
 #endif
