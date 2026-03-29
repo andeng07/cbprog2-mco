@@ -44,7 +44,7 @@
 
 #define list_find_first(list, element, compare_func, result_ptr) do { \
   *(result_ptr) = NULL; \
-  for (int _i = 0; _i < (list)->size && (*result_ptr) == NULL; _i++) { \
+  for (int _i = 0; _i < (list)->size && *(result_ptr) == NULL; _i++) { \
     if (compare_func(&(list)->items[_i], &(element))) { \
       *(result_ptr) = &(list)->items[_i]; \
     } \
@@ -84,7 +84,5 @@
 #define list_clear(list) ((list)->size = 0)
 
 #define list_foreach(type, var, list) \
-  for (int _i = 0; _i < (list)->size; _i++) \
-      for (type var = (list)->items[_i]; _i < (list)->size; _i = (list)->size)
-
+    for (type *var = (list)->items, *_end = (list)->items + (list)->size; var < _end; var++)
 #endif
