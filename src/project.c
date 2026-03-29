@@ -7,7 +7,6 @@
 int read_material_element(FILE *fp, Material *m) {
   if (!fp || !m)
     return 0;
-  // Reads: id, category, product_name, density, carbon
   return fscanf(fp, MAT_IN_FMT, &m->id, m->company_name, m->category, m->type,
                 m->product_name, &m->embodied_carbon, &m->density) == 7;
 }

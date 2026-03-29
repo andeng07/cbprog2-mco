@@ -261,7 +261,6 @@ int handle_delete_material(ProgramState *state) {
 }
 
 void handle_display_projects(ProgramState *state) {
-  // TODO:
   io_print_header("Project List");
 
   printf(GRN "| %-4s | %-28s | %-8s | %-17s | %-9s |\n" RESET, "ID",
@@ -277,7 +276,7 @@ void handle_display_projects(ProgramState *state) {
 }
 
 int handle_add_project(ProgramState *state) {
-  Project p = {.sections = EMPTY_LIST}; // Use your macro for the internal list
+  Project p = {.sections = EMPTY_LIST}; 
   io_print_header("Create New Project");
   io_get_uint("Project ID", &p.id);
   io_get_string("Project Name", p.project_name, 64);
@@ -291,7 +290,6 @@ int handle_add_project(ProgramState *state) {
 void handle_display_project(ProgramState *state, Project *project) {
   char header_buffer[128];
 
-  // 1. Centered Header Card
   snprintf(header_buffer, sizeof(header_buffer), "PROJECT: %s (ID: %u)",
            project->project_name, project->id);
   printf("\n\n");
@@ -305,8 +303,6 @@ void handle_display_project(ProgramState *state, Project *project) {
   io_print_centered(header_buffer, BGRN);
   printf("\n");
 
-  // 2. Table Headers
-  // Using a wider layout to accommodate the extra data
   printf("  %-4s | %-15s | %-32s | %-10s | %-12s\n", "ID", "Section",
          "Material", "Vol (m3)", "Embodied Em.");
   printf(
@@ -324,14 +320,12 @@ void handle_display_project(ProgramState *state, Project *project) {
            s->section_name, s->material.product_name, volume, embodied);
   }
 
-  // 3. Footer Summary
   printf("  "
          "----------------------------------------------------------------------------"
          "---------\n");
   printf("  " GRN "TOTAL EMBODIED CARBON:" RESET " %10.2f kg CO2e\n\n",
          project_ee);
 
-  // Centered Footer
   io_print_centered("END OF PROJECT REPORT", BWHT);
   printf("\n");
 }

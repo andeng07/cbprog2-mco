@@ -28,7 +28,7 @@ int run_menu_internal(const Menu *menu, ProgramState *state, int *is_active) {
     io_print_error("Invalid input type");
     io_clear_buffer();
     list_free(&valid_indices);
-    return -1; // Trigger loop again
+    return -1; 
   }
   io_clear_buffer();
 
@@ -41,7 +41,7 @@ int run_menu_internal(const Menu *menu, ProgramState *state, int *is_active) {
   if (choice > 0 && choice <= valid_indices.size) {
     int actual_idx = valid_indices.items[choice - 1];
     list_free(&valid_indices);
-    return actual_idx; // SUCCESS: Return the actual item index
+    return actual_idx;
   }
 
   io_print_error("Invalid Choice.");

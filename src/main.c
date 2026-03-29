@@ -4,8 +4,7 @@
 #include "program.h"
 #include "project.h"
 #include "user.h"
-// GIT_AUTHOR_DATE="2026-03-30 06:52:22 +0800" GIT_COMMITTER_DATE="2026-03-30 06:52:22 +0800" git commit -m "finalize code"
-// Prototypes
+
 void open_auth_menu(ProgramState *state);
 void open_main_menu(ProgramState *state);
 void open_acc_menu(ProgramState *state);
