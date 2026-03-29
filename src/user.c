@@ -6,16 +6,16 @@ int read_cred_element(FILE *file_ptr, UserCredential *credential) {
   if (!file_ptr || !credential)
     return 0;
 
-  return fscanf(file_ptr, CRED_SERIALIZABLE_FORMAT, &credential->id,
-                credential->password, credential->recovery_answer) == 3;
+  return fscanf(file_ptr, CRED_IN_FMT, &credential->id, credential->password,
+                credential->recovery_answer) == 3;
 }
 
 void write_cred_element(FILE *file_ptr, const UserCredential *credential) {
   if (!file_ptr || !credential)
     return;
 
-  fprintf(file_ptr, CRED_SERIALIZABLE_FORMAT, credential->id,
-          credential->password, credential->recovery_answer);
+  fprintf(file_ptr, CRED_OUT_FMT, credential->id, credential->password,
+          credential->recovery_answer);
 }
 
 void load_creds_from_file(UserCredentialList *credentials) {
@@ -30,16 +30,16 @@ int read_user_element(FILE *file_ptr, User *user) {
   if (!file_ptr || !user)
     return 0;
 
-  return fscanf(file_ptr, USER_SERIALIZABLE_FORMAT, &user->id,
-                &user->permission, user->name.first_name,
-                user->name.middle_name, user->name.last_name) == 5;
+  return fscanf(file_ptr, USER_IN_FMT, &user->id, &user->permission,
+                user->name.first_name, user->name.middle_name,
+                user->name.last_name) == 5;
 }
 
 void write_user_element(FILE *file_ptr, const User *user) {
   if (!file_ptr || !user)
     return;
 
-  fprintf(file_ptr, USER_SERIALIZABLE_FORMAT, user->id, user->permission,
+  fprintf(file_ptr, USER_OUT_FMT, user->id, user->permission,
           user->name.first_name, user->name.middle_name, user->name.last_name);
 }
 

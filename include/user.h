@@ -8,8 +8,19 @@
 #define USERS_FILE_NAME "users.txt"
 #define CREDS_FILE_NAME "creds.txt"
 
-#define CRED_SERIALIZABLE_FORMAT "%u , %s , %s\n"
-#define USER_SERIALIZABLE_FORMAT "%u , %u , %s , %s , %s\n"
+#define CRED_IN_FMT    " %u,%[^,],%[^\n]"
+#define CRED_OUT_FMT   "%u,%s,%s\n"
+
+#define USER_IN_FMT    " %u,%u,%[^,],%[^,],%[^\n]"
+#define USER_OUT_FMT   "%u,%u,%s,%s,%s\n"
+
+typedef enum {
+    GUEST = 0,          // Login / Register
+    USER = 1,           // View Projects
+    PM = 2,             // Create Projects
+    COMPANY_ADMIN = 3,  // Access Project History
+    APP_ADMIN = 4       // Records from different companies / Catalogue
+} Role;
 
 typedef struct {
   String32 first_name;
