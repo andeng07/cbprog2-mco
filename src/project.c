@@ -190,7 +190,12 @@ float calculate_project_ee(Project *project) {
 }
 
 int mat_cmp(Material *a, Material *b) {
-  return b->embodied_carbon - a->embodied_carbon;
+  if (a->embodied_carbon > b->embodied_carbon)
+    return -1;
+  else if (a->embodied_carbon < b->embodied_carbon)
+    return 1;
+  else
+    return 0;
 }
 
 float calculate_project_ee_ceiling(MaterialList *material_list,
