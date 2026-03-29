@@ -75,13 +75,8 @@ int get_materials_by_category(MaterialList *dest, const MaterialList *source,
 float calculate_embodied_carbon(Section *section) {
   float result = 0;
 
-  if (strcmp(section->material.category, "Glass") == 0) {
-    result = (section->width * section->length) *
-             (section->material.embodied_carbon / section->height);
-  } else {
-    result = section->length * section->width * section->height *
-             section->material.density * section->material.embodied_carbon;
-  }
+  result = section->length * section->width * section->height *
+           section->material.density * section->material.embodied_carbon;
 
   return result;
 }
@@ -184,10 +179,6 @@ int delete_project(ProjectList *list, unsigned int id) {
   return 0;
 }
 
-int mat_cmp(Material *a, Material *b) {
-  return a->embodied_carbon > b->embodied_carbon;
-}
-
 float calculate_project_ee(Project *project) {
   float ee_sum = 0;
 
@@ -198,6 +189,10 @@ float calculate_project_ee(Project *project) {
   return ee_sum;
 }
 
+int mat_cmp(Material *a, Material *b) {
+  return b->embodied_carbon - a->embodied_carbon;
+}
+
 float calculate_project_ee_ceiling(MaterialList *material_list,
                                    Project *project) {
   float max_embodied_emission_sum = 0;
@@ -206,7 +201,22 @@ float calculate_project_ee_ceiling(MaterialList *material_list,
     MaterialList filtered = EMPTY_LIST;
 
     get_materials_by_category(&filtered, material_list, sec->material.category);
+
+    printf("Before Sort\n");
+
+    list_foreach(Material, var, &filtered) {
+      printf("%d, %s, %s, %f\n", var->id, var->category, var->product_name,
+             var->embodied_carbon);
+    }
+
     list_sort(&filtered, mat_cmp);
+
+    printf("After Sort\n");
+
+    list_foreach(Material, var, &filtered) {
+      printf("%d, %s, %s, %f\n", var->id, var->category, var->product_name,
+             var->embodied_carbon);
+    }
 
     max_embodied_emission_sum += sec->length * sec->width * sec->height *
                                  sec->material.density *

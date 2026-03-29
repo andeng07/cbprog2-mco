@@ -4,7 +4,7 @@
 #include "program.h"
 #include "project.h"
 #include "user.h"
-
+// GIT_AUTHOR_DATE="2026-03-30 06:52:22 +0800" GIT_COMMITTER_DATE="2026-03-30 06:52:22 +0800" git commit -m "finalize code"
 // Prototypes
 void open_auth_menu(ProgramState *state);
 void open_main_menu(ProgramState *state);
@@ -89,9 +89,11 @@ void open_main_menu(ProgramState *state) {
 void open_acc_menu(ProgramState *state) {
   Menu menu = {.title = "Account Management", .entries = EMPTY_LIST};
   list_push(&menu.entries, ((MenuItem){"List Users", PERM_ACCOUNT_LIST}));
-  list_push(&menu.entries, ((MenuItem){"Register New User", PERM_ACCOUNT_REGISTER}));
+  list_push(&menu.entries,
+            ((MenuItem){"Register New User", PERM_ACCOUNT_REGISTER}));
   list_push(&menu.entries, ((MenuItem){"Edit User", PERM_ACCOUNT_EDIT_USER}));
-  list_push(&menu.entries, ((MenuItem){"Edit Credentials", PERM_ACCOUNT_EDIT_CRED}));
+  list_push(&menu.entries,
+            ((MenuItem){"Edit Credentials", PERM_ACCOUNT_EDIT_CRED}));
   list_push(&menu.entries, ((MenuItem){"Delete", PERM_ACCOUNT_DELETE}));
 
   run_menu(&menu, state, selection) {
@@ -148,7 +150,8 @@ void open_acc_sort_strategy_menu(ProgramState *state) {
   list_push(&menu.entries, ((MenuItem){"Name: A-Z", PERM_ACCOUNT_LIST}));
   list_push(&menu.entries, ((MenuItem){"Name: Z-A", PERM_ACCOUNT_LIST}));
   list_push(&menu.entries, ((MenuItem){"Rank: User first", PERM_ACCOUNT_LIST}));
-  list_push(&menu.entries, ((MenuItem){"Rank: Admin first", PERM_ACCOUNT_LIST}));
+  list_push(&menu.entries,
+            ((MenuItem){"Rank: Admin first", PERM_ACCOUNT_LIST}));
 
   run_menu(&menu, state, selection) {
     switch (selection) {
@@ -180,8 +183,10 @@ void open_acc_sort_strategy_menu(ProgramState *state) {
 
 void open_project_view_menu(ProgramState *state, Project *p) {
   Menu menu = {.title = "Project Detail View", .entries = EMPTY_LIST};
-  list_push(&menu.entries, ((MenuItem){"Add Section", PERM_PROJECT_SECTION_ADD}));
-  list_push(&menu.entries, ((MenuItem){"Delete Section", PERM_PROJECT_SECTION_DELETE}));
+  list_push(&menu.entries,
+            ((MenuItem){"Add Section", PERM_PROJECT_SECTION_ADD}));
+  list_push(&menu.entries,
+            ((MenuItem){"Delete Section", PERM_PROJECT_SECTION_DELETE}));
 
   handle_display_project(state, p);
 
@@ -231,7 +236,8 @@ void open_material_menu(ProgramState *state) {
   Menu menu = {.title = "Material Management", .entries = EMPTY_LIST};
   list_push(&menu.entries, ((MenuItem){"List Materials", PERM_MATERIAL_LIST}));
   list_push(&menu.entries, ((MenuItem){"Add Material", PERM_MATERIAL_ADD}));
-  list_push(&menu.entries, ((MenuItem){"Delete Material", PERM_MATERIAL_DELETE}));
+  list_push(&menu.entries,
+            ((MenuItem){"Delete Material", PERM_MATERIAL_DELETE}));
 
   run_menu(&menu, state, selection) {
     switch (selection) {
