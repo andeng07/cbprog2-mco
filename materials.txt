@@ -1,0 +1,33 @@
+32
+1,Holcim Philippines Inc.,Cement,Fly Ash Cement,Holcim EcoPlanet,0.588,2400
+2,Holcim Philippines Inc.,Cement,Port-Poz. Cement,Holcim Solid,0.735,2400
+3,Republic Cement,Cement,Type II Portland - Lime,Rapid Set PLUS,0.612,2400
+4,Lemery Corp,Cement,Blast Furnace,eco TIBAY Slag,0.342,2400
+5,Dangote Cement,Cement,Portland - Lime,Dangote 3x 42.5N,0.736,2400
+6,Vicat,Cement,Pozzolanic Cement,Vicat DECA,0.462,2400
+7,Anhui Conch Cement Co.,Cement,Port - Slag,Conch Brand,0.755,2400
+8,Philippines Wood,Wood,Hardwood,N/A,0.303,644
+9,Philippines Wood,Wood,Softwood,N/A,0.263,644
+10,Philippines Wood,Wood,Plywood,N/A,0.681,644
+11,MATIMCO,Wood,Laminated Veneer Lumber,N/A,0.39,644
+12,Filtra Timber,Wood,Softwood,N/A,0.263,644
+13,Filtra Timber,Wood,Hardwood,N/A,0.303,644
+14,Falcon Timber,Wood,Chipboard,N/A,0.452,644
+15,Ten Build PH,Wood,Fibreboard,N/A,0.715,644
+16,Saint Gobain Glass,Glass,Laminated Toughened Glass,ORAE low carbon glass,0.2656,2500
+17,Saint Gobain Glass,Glass,Triple Glazed,Clima Top Triple Glazed,1.75,2500
+18,Saint Gobain Glass,Glass,Double Glazed,Clima Top Double Glazed,1.63,2500
+19,Lamilux,Glass,Toughened Glass,Glass Roof Passive Standard,3.10,2500
+20,Lamilux,Glass,Multilayer Safety Glass,Glass Roof Fire Resistance,2.08,2500
+21,Pacific Glass Corporation,Glass,Single Glass Pane,Tinted Float Glass,1.44,2500
+22,Carlton Glass Enterprise,Glass,Double Glazing,DGU Double Glaze,1.63,2500
+23,Viridian Glass,Glass,Double Glazing,ThermoTech,2.08,2500
+24,Viridian Glass,Glass,Toughened Glass,Intruder Guard,1.66,2500
+25,Accutech Steel,Steel,Electrogalvanized,N/A,2.71,7840
+26,Shoji Steel Inc.,Steel,Electrogalvanized,N/A,2.71,7840
+27,Linton Inc.,Steel,Cold Rolled Coil,N/A,2.47,7840
+28,Linton Inc.,Steel,Galvanized,N/A,1.93,7840
+29,Steel Asia,Steel,Rebar,N/A,1.72,7840
+30,Metal Exponents Inc,Steel,Hot Rolled Coil,N/A,2.38,7840
+31,Metal Exponents Inc,Steel,Cold Rolled Coil,N/A,2.47,7840
+32,Dek Metal,Steel,Organic Coated,N/A,2.88,7840
