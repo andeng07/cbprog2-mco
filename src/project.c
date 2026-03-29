@@ -201,22 +201,7 @@ float calculate_project_ee_ceiling(MaterialList *material_list,
     MaterialList filtered = EMPTY_LIST;
 
     get_materials_by_category(&filtered, material_list, sec->material.category);
-
-    printf("Before Sort\n");
-
-    list_foreach(Material, var, &filtered) {
-      printf("%d, %s, %s, %f\n", var->id, var->category, var->product_name,
-             var->embodied_carbon);
-    }
-
     list_sort(&filtered, mat_cmp);
-
-    printf("After Sort\n");
-
-    list_foreach(Material, var, &filtered) {
-      printf("%d, %s, %s, %f\n", var->id, var->category, var->product_name,
-             var->embodied_carbon);
-    }
 
     max_embodied_emission_sum += sec->length * sec->width * sec->height *
                                  sec->material.density *
