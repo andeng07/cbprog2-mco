@@ -268,8 +268,11 @@ void handle_display_projects(ProgramState *state) {
          "Project Name", "Sections", "Embodied Emission", "Status");
 
   list_foreach(Project, p, state->project_list) {
-    printf("| %-4u | %-28s | %-8d | %-17.2f | %-9s |\n", p->id, p->project_name,
-           p->sections.size, p->total_carbon, "Safe");
+    float project_ee = calculate_project_ee(p);
+    float project_ee_ceil = calculate_project_ee_ceiling(state->material_list, p);
+
+    printf("| %-4u | %-28s | %-8d | %-17.2f | %-9s |" RESET "\n", p->id, p->project_name,
+           p->sections.size, project_ee, project_ee <= project_ee_ceil ? "Safe" : "Danger");
   }
 }
 
@@ -304,11 +307,11 @@ void handle_display_project(ProgramState *state, Project *project) {
 
   // 2. Table Headers
   // Using a wider layout to accommodate the extra data
-  printf("  %-4s | %-15s | %-12s | %-10s | %-12s\n", "ID", "Section",
+  printf("  %-4s | %-15s | %-32s | %-10s | %-12s\n", "ID", "Section",
          "Material", "Vol (m3)", "Embodied Em.");
   printf(
       "  "
-      "-----|-----------------|--------------|------------|--------------|\n");
+      "-----|-----------------|----------------------------------|------------|-------------\n");
 
   for (int i = 0; i < project->sections.size; i++) {
     Section *s = &project->sections.items[i];
@@ -317,13 +320,13 @@ void handle_display_project(ProgramState *state, Project *project) {
 
     double embodied = calculate_embodied_carbon(s);
 
-    printf("  %-4d | %-15s | %-12s | %-10.2f | %-12.2f\n", i + 1,
+    printf("  %-4d | %-15s | %-32s | %-10.2f | %-12.2f\n", i + 1,
            s->section_name, s->material.product_name, volume, embodied);
   }
 
   // 3. Footer Summary
   printf("  "
-         "---------------------------------------------------------------------"
+         "----------------------------------------------------------------------------"
          "---------\n");
   printf("  " GRN "TOTAL EMBODIED CARBON:" RESET " %10.2f kg CO2e\n\n",
          project_ee);
